@@ -8,14 +8,17 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeRole {
+public class Organization {
 
     @Id
     @GeneratedValue
@@ -23,5 +26,7 @@ public class EmployeeRole {
 
     @NotNull
     private String name;
-}
 
+    @OneToMany(mappedBy = "organization")
+    private Set<Department> departments = new HashSet<>();
+}

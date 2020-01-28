@@ -8,6 +8,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -15,7 +17,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeRole {
+public class Department {
 
     @Id
     @GeneratedValue
@@ -23,5 +25,8 @@ public class EmployeeRole {
 
     @NotNull
     private String name;
-}
 
+    @ManyToOne
+    @JoinColumn(name = "id", nullable = false)
+    private Organization organization;
+}

@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EmployeeRole {
+public class Country {
 
     @Id
     @GeneratedValue
@@ -23,5 +23,7 @@ public class EmployeeRole {
 
     @NotNull
     private String name;
-}
 
+    @NotNull
+    private String code;
+}
