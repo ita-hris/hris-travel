@@ -1,4 +1,6 @@
-CREATE DATABASE hris_travel_test IF NOT EXISTS;
+/* Postgresql can execute CREATE DATABASE only as a single statement.
+If execute it with all lines of script you catch "CREATE DATABASE cannot run inside a transaction block"
+CREATE DATABASE hris_travel_test;*/
 
 
 CREATE TABLE IF NOT EXISTS employee_role
@@ -7,6 +9,7 @@ CREATE TABLE IF NOT EXISTS employee_role
     name text NOT NULL,
     PRIMARY KEY (id)
 );
+COMMENT ON TABLE employee_role IS 'employee role in department';
 
 CREATE TABLE IF NOT EXISTS organization
 (
@@ -52,6 +55,7 @@ CREATE TABLE IF NOT EXISTS country
     code character(3) NOT NULL,
     PRIMARY KEY (id)
 );
+
 CREATE TABLE IF NOT EXISTS travel
 (
     id bigserial NOT NULL,
@@ -70,6 +74,7 @@ CREATE TABLE IF NOT EXISTS travel
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
 );
+COMMENT ON TABLE travel IS 'Table include information about employee and country in future trip and period of date';
 
 CREATE TABLE IF NOT EXISTS type_expense
 (
@@ -129,6 +134,7 @@ CREATE TABLE IF NOT EXISTS travel_expense
     ON UPDATE NO ACTION
     ON DELETE CASCADE
 );
+COMMENT ON TABLE travel_expense IS 'Table include information about travel expense: type of expense, amount of expense, date and type of currency';
 
 CREATE TABLE IF NOT EXISTS currency_rate
 (
@@ -147,6 +153,7 @@ CREATE TABLE IF NOT EXISTS currency_rate
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
 );
+COMMENT ON TABLE currency_rate IS 'Table store currency rate for convertation in local currency';
 
 CREATE TABLE IF NOT EXISTS visa_type
 (
@@ -154,6 +161,7 @@ CREATE TABLE IF NOT EXISTS visa_type
     name text NOT NULL,
     PRIMARY KEY (id)
 );
+COMMENT ON TABLE visa_type IS 'Visa type defines visa use for';
 
 CREATE TABLE IF NOT EXISTS visa_template
 (
@@ -161,6 +169,7 @@ CREATE TABLE IF NOT EXISTS visa_template
     name text NOT NULL,
     PRIMARY KEY (id)
 );
+COMMENT ON TABLE visa_template IS 'Template visa which filling for sending in visa embassy';
 
 CREATE TABLE IF NOT EXISTS visa_application
 (
@@ -186,6 +195,7 @@ CREATE TABLE IF NOT EXISTS visa_application
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
 );
+COMMENT ON TABLE visa_application IS 'Table store information about application visa and valid term for use of a future visa';
 
 CREATE TABLE IF NOT EXISTS approve_travel_expense
 (
@@ -210,6 +220,7 @@ CREATE TABLE IF NOT EXISTS approve_travel_expense
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
 );
+COMMENT ON TABLE approve_travel_expense IS 'Information about travel expense and decision about this expense';
 
 CREATE SEQUENCE IF NOT EXISTS bill_id_seq
     INCREMENT 1
