@@ -1,30 +1,32 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Organization {
+@Table(name = "organization")
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Organization extends AbstractEntity {
 
     @Id
-    @GeneratedValue
+    @Column(name = "id")
+    @SequenceGenerator(name = "organization_id", sequenceName = "organization_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "organization_id")
     private Long id;
 
-    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "organization")

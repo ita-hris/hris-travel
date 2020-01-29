@@ -1,29 +1,31 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Country {
+@Table(name = "country")
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class Country extends AbstractEntity {
 
     @Id
-    @GeneratedValue
+    @Column(name = "id")
+    @SequenceGenerator(name = "country_id", sequenceName = "country_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country_id")
     private Long id;
 
-    @NotNull
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
+    @Column(name = "code", nullable = false)
     private String code;
 }
