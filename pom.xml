@@ -16,16 +16,23 @@
 
     <properties>
         <java.version>11</java.version>
+<!--        <logstash.host>logstashcsm.example.ru</logstash.host>-->
     </properties>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -34,6 +41,10 @@
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-log4j</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -81,24 +92,35 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.liquibase</groupId>-->
-<!--                <artifactId>liquibase-maven-plugin</artifactId>-->
-<!--                <version>3.4.1</version>-->
-<!--                <configuration>-->
-<!--                    <propertyFile>src/main/resources/db/liquibase/liquibase.properties</propertyFile>-->
-<!--                    <changeLogFile>src/main/resources/db/liquibase/changelog/changelog-master.xml</changeLogFile>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>process-resources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>update</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <propertyFile>src/main/resources/db/liquibase/liquibase.properties</propertyFile>
+                    <changeLogFile>src/main/resources/db/liquibase/changelog/changelog-master.xml</changeLogFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+<!--                <logstash.port>10001</logstash.port>-->
+                <logger.console.tresholdFilter>ALL</logger.console.tresholdFilter>
+                <logger.file.tresholdFilter>ALL</logger.file.tresholdFilter>
+<!--                <logger.socket.tresholdFilter>OFF</logger.socket.tresholdFilter>-->
+            </properties>
+        </profile>
+    </profiles>
 </project>
