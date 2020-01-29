@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class VisaTemplate extends AbstractEntity {
 
     @Id
-    @SequenceGenerator(name = "visa_template_id", sequenceName = "visa_template_id_seq")
+    @SequenceGenerator(name = "visa_template_id", sequenceName = "visa_template_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visa_template_id")
     private Long id;
 

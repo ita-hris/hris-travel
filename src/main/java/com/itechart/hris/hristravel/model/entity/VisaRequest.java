@@ -13,7 +13,7 @@ import java.time.OffsetDateTime;
 public class VisaRequest extends AbstractEntity {
 
     @Id
-    @SequenceGenerator(name = "visa_request_id", sequenceName = "visa_request_id_seq")
+    @SequenceGenerator(name = "visa_request_id", sequenceName = "visa_request_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visa_request_id")
     private Long id;
 
@@ -26,19 +26,16 @@ public class VisaRequest extends AbstractEntity {
     @Column(name = "date_to", nullable = false)
     private OffsetDateTime dateTo;
 
-    @Column(name = "employee_id")
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private Employee employee;
 
-    @Column(name = "visa_type_id")
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "visa_type_id", referencedColumnName = "id")
     private VisaType visaType;
 
-    @Column(name = "visa_template_id")
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "visa_template_id", referencedColumnName = "id")
     private VisaTemplate visaTemplate;
 
     @Column(name = "comment", nullable = false)
