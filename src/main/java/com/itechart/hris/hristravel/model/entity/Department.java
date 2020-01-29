@@ -20,15 +20,15 @@ import javax.persistence.Table;
 public class Department extends AbstractEntity {
 
     @Id
-    @SequenceGenerator(name = "department_id", sequenceName = "department_id_seq")
+    @Column(name = "id")
+    @SequenceGenerator(name = "department_id", sequenceName = "department_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_id")
     private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "organization_id")
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
     private Organization organization;
 }

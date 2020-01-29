@@ -20,7 +20,7 @@ import javax.persistence.Table;
 public class Employee extends AbstractEntity {
 
     @Id
-    @SequenceGenerator(name = "employee_id", sequenceName = "employee_id_seq")
+    @SequenceGenerator(name = "employee_id", sequenceName = "employee_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_id")
     private Long id;
 
@@ -30,13 +30,11 @@ public class Employee extends AbstractEntity {
     @Column(name = "surname", nullable = false)
     private String surname;
 
-    @Column(name = "department_id")
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false)
     private Department department;
 
-    @Column(name = "employee_role_id")
     @ManyToOne
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "employee_role_id", referencedColumnName = "id", nullable = false)
     private EmployeeRole employeeRole;
 }
