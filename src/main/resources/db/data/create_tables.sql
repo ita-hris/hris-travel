@@ -9,7 +9,7 @@ COMMENT ON TABLE employee_role IS 'employee role in department';
 CREATE TABLE IF NOT EXISTS organization
 (
     id serial NOT NULL,
-    name text NOT NULL,
+    name text NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 
@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS employee
 CREATE TABLE IF NOT EXISTS country
 (
     id serial NOT NULL,
-    name text NOT NULL,
-    code character(3) NOT NULL,
+    name text NOT NULL UNIQUE,
+    code character(3) NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 
@@ -74,14 +74,14 @@ COMMENT ON TABLE travel IS 'Table include information about employee and country
 CREATE TABLE IF NOT EXISTS type_expense
 (
     id serial NOT NULL,
-    name text NOT NULL,
+    name text NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS approve_status_expense
 (
     id serial NOT NULL,
-    name text NOT NULL,
+    name text NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 
@@ -96,8 +96,8 @@ CREATE TABLE IF NOT EXISTS bill
 CREATE TABLE IF NOT EXISTS currency
 (
     id serial NOT NULL,
-    name text NOT NULL,
-    code character(3) NOT NULL,
+    name text NOT NULL UNIQUE,
+    code character(3) NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 
@@ -153,7 +153,7 @@ COMMENT ON TABLE currency_rate IS 'Table store currency rate for convertation in
 CREATE TABLE IF NOT EXISTS visa_type
 (
     id serial NOT NULL,
-    name text NOT NULL,
+    name text NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 COMMENT ON TABLE visa_type IS 'Visa type defines visa use for';
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS visa_template
 );
 COMMENT ON TABLE visa_template IS 'Template visa which filling for sending in visa embassy';
 
-CREATE TABLE IF NOT EXISTS visa_application
+CREATE TABLE IF NOT EXISTS visa_request
 (
     id bigint NOT NULL,
     filling_date timestamp with time zone,
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS visa_application
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
 );
-COMMENT ON TABLE visa_application IS 'Table store information about application visa and valid term for use of a future visa';
+COMMENT ON TABLE visa_request IS 'Table store information about application visa and valid term for use of a future visa';
 
 CREATE TABLE IF NOT EXISTS approve_travel_expense
 (
@@ -235,14 +235,14 @@ CREATE SEQUENCE travel_expense_id_seq
 ALTER TABLE travel_expense
     ALTER COLUMN id SET DEFAULT nextval('travel_expense_id_seq'::regclass);
 
-CREATE SEQUENCE visa_application_id_seq
+CREATE SEQUENCE visa_request_id_seq
     INCREMENT 1
     START 1
     MINVALUE 1
     MAXVALUE 9223372036854775807
     CACHE 1;
-ALTER TABLE visa_application
-    ALTER COLUMN id SET DEFAULT nextval('visa_application_id_seq'::regclass);
+ALTER TABLE visa_request
+    ALTER COLUMN id SET DEFAULT nextval('visa_request_id_seq'::regclass);
 
 CREATE SEQUENCE currency_rate_id_seq
     INCREMENT 1
