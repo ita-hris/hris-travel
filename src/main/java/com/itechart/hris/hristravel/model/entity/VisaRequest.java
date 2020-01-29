@@ -10,7 +10,7 @@ import java.time.OffsetDateTime;
 @Table(name = "visa_request")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class VisaRequest extends AbstractEntity  {
+public class VisaRequest extends AbstractEntity {
 
     @Id
     @SequenceGenerator(name = "visa_request_id", sequenceName = "visa_request_id_seq")
@@ -26,7 +26,12 @@ public class VisaRequest extends AbstractEntity  {
     @Column(name = "date_to", nullable = false)
     private OffsetDateTime dateTo;
 
-    @Column(name = "department_id")
+    @Column(name = "employee_id")
+    @ManyToOne
+    @JoinColumn(name = "id", nullable = false)
+    private Employee employee;
+
+    @Column(name = "visa_type_id")
     @ManyToOne
     @JoinColumn(name = "id", nullable = false)
     private VisaType visaType;

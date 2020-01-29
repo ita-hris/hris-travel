@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "visa_template")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class VisaTemplate extends AbstractEntity  {
+public class VisaTemplate extends AbstractEntity {
 
     @Id
     @SequenceGenerator(name = "visa_template_id", sequenceName = "visa_template_id_seq")
