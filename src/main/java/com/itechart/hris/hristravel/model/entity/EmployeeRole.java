@@ -19,7 +19,7 @@ public class EmployeeRole extends AbstractEntity {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "employee_role_id", sequenceName = "employee_role_id_seq")
+    @SequenceGenerator(name = "employee_role_id", sequenceName = "employee_role_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_role_id")
     private Long id;
 

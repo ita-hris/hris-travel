@@ -22,7 +22,7 @@ public class Organization extends AbstractEntity {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "organization_id", sequenceName = "organization_id_seq")
+    @SequenceGenerator(name = "organization_id", sequenceName = "organization_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "organization_id")
     private Long id;
 
