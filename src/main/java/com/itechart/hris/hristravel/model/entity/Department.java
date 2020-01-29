@@ -8,21 +8,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee_role")
+@Table(name = "department")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class EmployeeRole extends AbstractEntity {
+public class Department extends AbstractEntity {
 
     @Id
-    @Column(name = "id")
-    @SequenceGenerator(name = "employee_role_id", sequenceName = "employee_role_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_role_id")
+    @SequenceGenerator(name = "department_id", sequenceName = "department_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "department_id")
     private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "organization_id")
+    @ManyToOne
+    @JoinColumn(name = "id", nullable = false)
+    private Organization organization;
 }

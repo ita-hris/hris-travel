@@ -12,17 +12,20 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee_role")
+@Table(name = "country")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class EmployeeRole extends AbstractEntity {
+public class Country extends AbstractEntity {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "employee_role_id", sequenceName = "employee_role_id_seq")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_role_id")
+    @SequenceGenerator(name = "country_id", sequenceName = "country_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country_id")
     private Long id;
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    @Column(name = "code", nullable = false)
+    private String code;
 }
