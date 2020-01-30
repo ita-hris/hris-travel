@@ -26,8 +26,9 @@ public abstract class AbstractController<E extends AbstractEntity, S extends Com
 
     @Override
     public ResponseEntity<E> save(@RequestBody E entity) {
-        return service.save(entity).map(ResponseEntity::ok)
-                .orElseThrow(() -> new RuntimeException(HttpStatus.NOT_FOUND.toString()));
+        return service.save(entity)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @Override
