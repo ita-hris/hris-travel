@@ -6,14 +6,14 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "visa_type")
+@Table(name = "visa_template")
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class VisaType extends AbstractEntity {
+public class VisaTemplate extends AbstractEntity {
 
     @Id
-    @SequenceGenerator(name = "visa_type_id", sequenceName = "visa_type_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visa_type_id")
+    @SequenceGenerator(name = "visa_template_id", sequenceName = "visa_template_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "visa_template_id")
     private Long id;
 
     @Column(name = "name", nullable = false)
