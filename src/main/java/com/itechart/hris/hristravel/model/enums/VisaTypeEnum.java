@@ -1,4 +1,7 @@
 package com.itechart.hris.hristravel.model.enums;
 
-public class VisaTypeEnum {
+public enum  VisaTypeEnum {
+    TRAVEL,
+    WORK,
+    TRANSIT;
 }
