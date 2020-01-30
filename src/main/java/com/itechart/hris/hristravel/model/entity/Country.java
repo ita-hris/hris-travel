@@ -19,7 +19,7 @@ public class Country extends AbstractEntity {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name = "country_id", sequenceName = "country_id_seq")
+    @SequenceGenerator(name = "country_id", sequenceName = "country_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "country_id")
     private Long id;
 
