@@ -1,7 +1,7 @@
 package com.itechart.hris.hristravel.dao.repository;
 
-import org.springframework.stereotype.Repository;
+import com.itechart.hris.hristravel.model.entity.ApproveStatusExpense;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class ApproveStatusExpenseRepository {
+public interface ApproveStatusExpenseRepository extends JpaRepository<ApproveStatusExpense, Long> {
 }
