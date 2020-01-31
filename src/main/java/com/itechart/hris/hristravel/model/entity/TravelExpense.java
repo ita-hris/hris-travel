@@ -39,7 +39,7 @@ public class TravelExpense extends AbstractEntity {
     private Travel travel;
 
     @ManyToOne
-    @JoinColumn(name = "type_expsense_id", referencedColumnName = "id")
+    @JoinColumn(name = "type_expense_id", referencedColumnName = "id")
     private ExpenseType expenseType;
 
     @ManyToOne

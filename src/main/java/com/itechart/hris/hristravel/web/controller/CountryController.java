@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/country")
+@RequestMapping("/countries")
 public class CountryController extends AbstractController<Country, CountryService> {
 
     public CountryController(CountryService service) {
