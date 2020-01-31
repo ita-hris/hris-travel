@@ -1,16 +1,16 @@
 package com.itechart.hris.hristravel.web.controller;
 
-import com.itechart.hris.hristravel.model.entity.Employee;
-import com.itechart.hris.hristravel.service.EmployeeService;
+import com.itechart.hris.hristravel.model.entity.Travel;
+import com.itechart.hris.hristravel.service.TravelService;
 import com.itechart.hris.hristravel.web.controller.common.AbstractController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/employees")
-public class EmployeeController extends AbstractController<Employee, EmployeeService> {
+@RequestMapping("/travels")
+public class TravelController extends AbstractController<Travel, TravelService> {
 
-    protected EmployeeController(EmployeeService service) {
+    protected TravelController(TravelService service) {
         super(service);
     }
 }

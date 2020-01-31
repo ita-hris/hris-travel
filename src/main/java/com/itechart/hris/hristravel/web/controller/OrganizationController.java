@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/organization")
+@RequestMapping("/organizations")
 public class OrganizationController extends AbstractController<Organization, OrganizationService> {
 
     protected OrganizationController(OrganizationService service) {
