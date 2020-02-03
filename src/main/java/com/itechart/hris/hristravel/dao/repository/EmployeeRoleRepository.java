@@ -1,7 +1,7 @@
 package com.itechart.hris.hristravel.dao.repository;
 
-import org.springframework.stereotype.Repository;
+import com.itechart.hris.hristravel.model.entity.EmployeeRole;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public class EmployeeRoleRepository {
+public interface EmployeeRoleRepository extends JpaRepository<EmployeeRole, Long> {
 }
