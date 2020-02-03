@@ -2,6 +2,8 @@ package com.itechart.hris.hristravel.config;
 
 import java.util.Collections;
 import java.util.List;
+
+import com.google.common.base.Predicates;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +36,7 @@ public class AppConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
+                .paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .build()
                 .apiInfo(apiInfo());
     }
