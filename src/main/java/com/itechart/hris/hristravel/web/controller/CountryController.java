@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/countries")
-@Api(tags = {"Country Management System"})
+@Api(tags = {"Country API"})
 public class CountryController extends AbstractController<Country, CountryService> {
 
     public CountryController(CountryService service) {

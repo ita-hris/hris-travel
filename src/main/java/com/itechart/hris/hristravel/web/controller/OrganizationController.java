@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/organizations")
-@Api(tags = {"Organization Management System"})
+@Api(tags = {"Organization API"})
 public class OrganizationController extends AbstractController<Organization, OrganizationService> {
 
     protected OrganizationController(OrganizationService service) {

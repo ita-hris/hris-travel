@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/departments")
-@Api(tags = {"Department Management System"})
+@Api(tags = {"Department API"})
 public class DepartmentController extends AbstractController<Department, DepartmentService> {
 
     protected DepartmentController(DepartmentService service) {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/employees")
-@Api(tags = {"Employee Management System"})
+@Api(tags = {"Employee API"})
 public class EmployeeController extends AbstractController<Employee, EmployeeService> {
 
     protected EmployeeController(EmployeeService service) {
