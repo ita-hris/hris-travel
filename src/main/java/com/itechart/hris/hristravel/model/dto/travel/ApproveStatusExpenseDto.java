@@ -1,4 +1,4 @@
-package com.itechart.hris.hristravel.model.dto.visa;
+package com.itechart.hris.hristravel.model.dto.travel;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import lombok.Builder;
@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Builder
-public class VisaTypeDto extends AbstractDto {
+public class ApproveStatusExpenseDto extends AbstractDto {
 
     private Long id;
 
