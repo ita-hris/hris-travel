@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Map;
 
@@ -12,8 +13,8 @@ import java.util.Map;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyRestTemplateDto {
-    private Map<String, Double> rates;
+public class CurrencyRateDto {
+    private Map<String, BigDecimal> rates;
     private String base;
     private Date date;
 }

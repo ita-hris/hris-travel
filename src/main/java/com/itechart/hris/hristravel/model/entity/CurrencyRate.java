@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "currency_rate")
@@ -39,5 +39,5 @@ public class CurrencyRate extends AbstractEntity {
     private Currency currencyTo;
 
     @Column(name = "date")
-    private Date date;
+    private OffsetDateTime date;
 }

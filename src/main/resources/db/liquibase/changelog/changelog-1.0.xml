@@ -106,7 +106,7 @@
             CREATE TABLE IF NOT EXISTS currency
             (
             id serial NOT NULL,
-            name text NOT NULL UNIQUE,
+            name text UNIQUE,
             code character(3) NOT NULL UNIQUE,
             PRIMARY KEY (id)
             );
