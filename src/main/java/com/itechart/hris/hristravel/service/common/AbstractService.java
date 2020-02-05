@@ -2,8 +2,8 @@ package com.itechart.hris.hristravel.service.common;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import com.itechart.hris.hristravel.model.entity.AbstractEntity;
+import com.itechart.hris.hristravel.util.BeanMapper;
 import lombok.AllArgsConstructor;
-import org.dozer.Mapper;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public abstract class AbstractService<E extends AbstractEntity, D extends Abstra
         R extends JpaRepository<E, Long>> implements CommonService<D> {
 
     private final R repository;
-    private final Mapper mapper;
+    private final BeanMapper mapper;
     private final Class<E> entityClass;
     private final Class<D> dtoClass;
 
@@ -44,6 +44,6 @@ public abstract class AbstractService<E extends AbstractEntity, D extends Abstra
 
     @Override
     public List<D> getAll() {
-        return null;
+        return mapper.mapCollections(repository.findAll(), dtoClass);
     }
 }
