@@ -18,13 +18,13 @@ import java.util.Set;
 
 @Service
 public class CurrencyIntegrationService {
-    final static Logger logger = LogManager.getLogger(CurrencyIntegrationService.class);
+    private static final Logger LOGGER = LogManager.getLogger(CurrencyIntegrationService.class);
     private final CurrencyRateService currencyRateService;
     private final CurrencyService currencyService;
     private RestTemplate restTemplate = new RestTemplate();
 
     @Value("${currency.service.url}")
-    private String URL_FOR_SERVICE;
+    private String urlForService;
 
     public CurrencyIntegrationService(CurrencyService currencyService, CurrencyRateService currencyRateService) {
         this.currencyService = currencyService;
@@ -32,10 +32,10 @@ public class CurrencyIntegrationService {
     }
 
     public void updateCurrencyRate() {
-        CurrencyRateDto currencyRateDto = restTemplate.getForObject(URL_FOR_SERVICE, CurrencyRateDto.class);
+        CurrencyRateDto currencyRateDto = restTemplate.getForObject(urlForService, CurrencyRateDto.class);
 
         if (currencyRateDto == null || currencyRateDto.getBase().isEmpty() || currencyRateDto.getRates().isEmpty()) {
-            logger.error("Currencies could not refresh... Something wrong");
+            LOGGER.error("Currencies could not refresh... Something wrong");
             return;
         }
 
@@ -51,7 +51,7 @@ public class CurrencyIntegrationService {
 
     public void saveCurrencyIfNotExist() {
         Set<String> currencies =
-                Objects.requireNonNull(restTemplate.getForObject(URL_FOR_SERVICE, CurrencyRateDto.class))
+                Objects.requireNonNull(restTemplate.getForObject(urlForService, CurrencyRateDto.class))
                         .getRates()
                         .keySet();
 
