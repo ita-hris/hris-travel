@@ -1,7 +1,6 @@
 package com.itechart.hris.hristravel.model.dto.corporate;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.Department;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -17,5 +16,5 @@ public class OrganizationDto extends AbstractDto {
 
     private String name;
 
-    private Set<Department> departments;
+    private Set<DepartmentDto> departments;
 }

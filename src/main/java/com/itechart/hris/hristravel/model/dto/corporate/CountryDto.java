@@ -8,11 +8,11 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Builder
-public class DepartmentDto extends AbstractDto {
+public class CountryDto extends AbstractDto {
 
     private Long id;
 
     private String name;
 
-    private OrganizationDto organization;
+    private String code;
 }

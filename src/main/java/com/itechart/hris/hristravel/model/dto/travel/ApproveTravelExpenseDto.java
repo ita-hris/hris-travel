@@ -1,9 +1,7 @@
 package com.itechart.hris.hristravel.model.dto.travel;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.ApproveStatusExpense;
-import com.itechart.hris.hristravel.model.entity.Employee;
-import com.itechart.hris.hristravel.model.entity.TravelExpense;
+import com.itechart.hris.hristravel.model.dto.corporate.EmployeeDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -23,9 +21,9 @@ public class ApproveTravelExpenseDto extends AbstractDto {
 
     private String comment;
 
-    private Employee approver;
+    private EmployeeDto approver;
 
-    private ApproveStatusExpense approveStatusExpense;
+    private ApproveStatusExpenseDto approveStatusExpense;
 
-    private TravelExpense travelExpense;
+    private TravelExpenseDto travelExpense;
 }

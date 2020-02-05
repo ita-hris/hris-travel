@@ -1,7 +1,6 @@
 package com.itechart.hris.hristravel.model.dto.corporate;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.Currency;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,9 +17,9 @@ public class CurrencyRateDto extends AbstractDto {
 
     private BigDecimal rate;
 
-    private Currency currencyFrom;
+    private CurrencyDto currencyFrom;
 
-    private Currency currencyTo;
+    private CurrencyDto currencyTo;
 
     private Date date;
 }

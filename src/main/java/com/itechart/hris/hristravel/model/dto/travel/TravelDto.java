@@ -1,8 +1,8 @@
 package com.itechart.hris.hristravel.model.dto.travel;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.Country;
-import com.itechart.hris.hristravel.model.entity.Employee;
+import com.itechart.hris.hristravel.model.dto.corporate.CountryDto;
+import com.itechart.hris.hristravel.model.dto.corporate.EmployeeDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -22,7 +22,7 @@ public class TravelDto extends AbstractDto {
 
     private OffsetDateTime dateTo;
 
-    private Employee employee;
+    private EmployeeDto employee;
 
-    private Country country;
+    private CountryDto country;
 }

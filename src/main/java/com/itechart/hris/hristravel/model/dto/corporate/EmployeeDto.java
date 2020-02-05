@@ -1,8 +1,6 @@
 package com.itechart.hris.hristravel.model.dto.corporate;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.Department;
-import com.itechart.hris.hristravel.model.entity.EmployeeRole;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,7 +16,7 @@ public class EmployeeDto extends AbstractDto {
 
     private String surname;
 
-    private Department department;
+    private DepartmentDto department;
 
-    private EmployeeRole employeeRole;
+    private EmployeeRoleDto employeeRole;
 }

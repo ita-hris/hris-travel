@@ -1,7 +1,6 @@
 package com.itechart.hris.hristravel.model.dto.corporate;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.CurrencyRate;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +18,7 @@ public class CurrencyDto extends AbstractDto {
 
     private String code;
 
-    private Set<CurrencyRate> currencyFrom;
+    private Set<CurrencyRateDto> currencyFrom;
 
-    private Set<CurrencyRate> currencyTo;
+    private Set<CurrencyRateDto> currencyTo;
 }

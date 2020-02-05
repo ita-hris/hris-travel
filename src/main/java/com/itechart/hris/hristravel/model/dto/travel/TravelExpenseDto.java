@@ -1,10 +1,7 @@
 package com.itechart.hris.hristravel.model.dto.travel;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
-import com.itechart.hris.hristravel.model.entity.Bill;
-import com.itechart.hris.hristravel.model.entity.Currency;
-import com.itechart.hris.hristravel.model.entity.ExpenseType;
-import com.itechart.hris.hristravel.model.entity.Travel;
+import com.itechart.hris.hristravel.model.dto.corporate.CurrencyDto;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -25,11 +22,11 @@ public class TravelExpenseDto extends AbstractDto {
 
     private String comment;
 
-    private Travel travel;
+    private TravelDto travel;
 
-    private ExpenseType expenseType;
+    private ExpenseTypeDto expenseType;
 
-    private Currency currency;
+    private CurrencyDto currency;
 
-    private Bill bill;
+    private BillDto bill;
 }
