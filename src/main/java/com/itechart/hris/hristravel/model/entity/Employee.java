@@ -1,8 +1,8 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Table(name = "employee")
@@ -37,4 +40,16 @@ public class Employee extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "employee_role_id", referencedColumnName = "id", nullable = false)
     private EmployeeRole employeeRole;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private Set<Travel> travels = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "employee")
+    private Set<VisaRequest> visaRequests = new HashSet<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "approver")
+    private Set<ApproveTravelExpense> approveTravelExpenses = new HashSet<>();
 }
