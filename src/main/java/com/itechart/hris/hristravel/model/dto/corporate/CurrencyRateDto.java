@@ -3,15 +3,14 @@ package com.itechart.hris.hristravel.model.dto.corporate;
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

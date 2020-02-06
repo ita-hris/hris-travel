@@ -1,7 +1,7 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,8 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "employee_role")
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 public class EmployeeRole extends AbstractEntity {
 
     @Id

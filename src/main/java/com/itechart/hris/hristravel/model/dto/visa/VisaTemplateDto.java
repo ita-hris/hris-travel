@@ -3,15 +3,14 @@ package com.itechart.hris.hristravel.model.dto.visa;
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 /**
  * DTO for VisaTemplate
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
