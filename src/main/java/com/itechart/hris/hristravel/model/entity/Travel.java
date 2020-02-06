@@ -1,6 +1,9 @@
 package com.itechart.hris.hristravel.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
@@ -40,4 +44,8 @@ public class Travel extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "country_id", referencedColumnName = "id")
     private Country country;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "travel")
+    private Set<TravelExpense> travelExpenses = new HashSet<>();
 }
