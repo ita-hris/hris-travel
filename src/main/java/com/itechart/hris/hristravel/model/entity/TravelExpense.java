@@ -1,10 +1,9 @@
 package com.itechart.hris.hristravel.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.util.HashSet;
-import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,13 +14,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "travel_expense")
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 public class TravelExpense extends AbstractEntity {
 
     @Id
@@ -33,7 +33,7 @@ public class TravelExpense extends AbstractEntity {
     private BigDecimal amount;
 
     @Column(name = "date")
-    private OffsetDateTime date;
+    private Date date;
 
     @Column(name = "comment")
     private String comment;

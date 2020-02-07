@@ -1,7 +1,7 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,12 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "visa_request")
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 public class VisaRequest extends AbstractEntity {
 
     @Id
@@ -26,13 +25,13 @@ public class VisaRequest extends AbstractEntity {
     private Long id;
 
     @Column(name = "filling_date", nullable = false)
-    private OffsetDateTime fillingDate;
+    private Date fillingDate;
 
     @Column(name = "date_from", nullable = false)
-    private OffsetDateTime dateFrom;
+    private Date dateFrom;
 
     @Column(name = "date_to", nullable = false)
-    private OffsetDateTime dateTo;
+    private Date dateTo;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")

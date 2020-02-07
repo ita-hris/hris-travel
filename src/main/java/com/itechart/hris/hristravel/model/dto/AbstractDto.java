@@ -1,4 +1,4 @@
 package com.itechart.hris.hristravel.model.dto;
 
-public class AbstractDto {
+public abstract class AbstractDto {
 }

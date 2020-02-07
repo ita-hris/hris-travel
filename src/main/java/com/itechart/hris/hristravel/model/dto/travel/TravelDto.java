@@ -1,6 +1,7 @@
-package com.itechart.hris.hristravel.model.dto.visa;
+package com.itechart.hris.hristravel.model.dto.travel;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
+import com.itechart.hris.hristravel.model.dto.corporate.CountryDto;
 import com.itechart.hris.hristravel.model.dto.corporate.EmployeeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,18 +11,15 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-/**
- * DTO for VisaRequest
- */
 @Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class VisaRequestDto extends AbstractDto {
+public class TravelDto extends AbstractDto {
 
     private Long id;
 
-    private Date fillingDate;
+    private String comment;
 
     private Date dateFrom;
 
@@ -29,9 +27,5 @@ public class VisaRequestDto extends AbstractDto {
 
     private EmployeeDto employee;
 
-    private VisaTypeDto visaType;
-
-    private VisaTemplateDto visaTemplate;
-
-    private String comment;
+    private CountryDto country;
 }
