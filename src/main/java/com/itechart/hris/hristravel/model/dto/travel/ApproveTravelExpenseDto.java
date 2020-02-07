@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Getter @Setter
 @Builder
@@ -18,9 +18,9 @@ public class ApproveTravelExpenseDto extends AbstractDto {
 
     private Long id;
 
-    private OffsetDateTime creationDate;
+    private Date creationDate;
 
-    private OffsetDateTime decisionDate;
+    private Date decisionDate;
 
     private String comment;
 

@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "approve_travel_expense")
@@ -25,10 +25,10 @@ public class ApproveTravelExpense extends AbstractEntity {
     private Long id;
 
     @Column(name = "creation_date")
-    private OffsetDateTime creationDate;
+    private Date creationDate;
 
     @Column(name = "decision_date")
-    private OffsetDateTime decisionDate;
+    private Date decisionDate;
 
     @Column(name = "comment")
     private String comment;

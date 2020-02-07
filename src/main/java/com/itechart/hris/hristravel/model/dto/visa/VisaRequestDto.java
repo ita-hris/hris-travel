@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 /**
  * DTO for VisaRequest
@@ -21,11 +21,11 @@ public class VisaRequestDto extends AbstractDto {
 
     private Long id;
 
-    private OffsetDateTime fillingDate;
+    private Date fillingDate;
 
-    private OffsetDateTime dateFrom;
+    private Date dateFrom;
 
-    private OffsetDateTime dateTo;
+    private Date dateTo;
 
     private EmployeeDto employee;
 

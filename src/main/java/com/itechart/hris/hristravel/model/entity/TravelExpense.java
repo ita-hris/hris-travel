@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +33,7 @@ public class TravelExpense extends AbstractEntity {
     private BigDecimal amount;
 
     @Column(name = "date")
-    private OffsetDateTime date;
+    private Date date;
 
     @Column(name = "comment")
     private String comment;
