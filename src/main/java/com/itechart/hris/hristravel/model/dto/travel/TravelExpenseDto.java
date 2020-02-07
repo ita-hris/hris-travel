@@ -9,7 +9,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter @Setter
 @Builder
@@ -21,7 +21,7 @@ public class TravelExpenseDto extends AbstractDto {
 
     private BigDecimal amount;
 
-    private LocalDateTime date;
+    private Date date;
 
     private String comment;
 
