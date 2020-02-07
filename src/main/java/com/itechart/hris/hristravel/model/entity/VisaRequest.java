@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "visa_request")
@@ -25,13 +25,13 @@ public class VisaRequest extends AbstractEntity {
     private Long id;
 
     @Column(name = "filling_date", nullable = false)
-    private Date fillingDate;
+    private OffsetDateTime fillingDate;
 
     @Column(name = "date_from", nullable = false)
-    private Date dateFrom;
+    private OffsetDateTime dateFrom;
 
     @Column(name = "date_to", nullable = false)
-    private Date dateTo;
+    private OffsetDateTime dateTo;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")

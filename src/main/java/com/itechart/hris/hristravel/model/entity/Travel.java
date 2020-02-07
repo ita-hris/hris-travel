@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
+import java.time.OffsetDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,10 +32,10 @@ public class Travel extends AbstractEntity {
     private String comment;
 
     @Column(name = "date_from")
-    private Date dateFrom;
+    private OffsetDateTime dateFrom;
 
     @Column(name = "date_to")
-    private Date dateTo;
+    private OffsetDateTime dateTo;
 
     @ManyToOne
     @JoinColumn(name = "employee_id", referencedColumnName = "id")
