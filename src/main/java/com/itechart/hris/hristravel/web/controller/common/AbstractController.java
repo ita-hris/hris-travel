@@ -32,10 +32,9 @@ public abstract class AbstractController<D extends AbstractDto, S extends Common
     }
 
     @Override
-    public ResponseEntity<D> update(@RequestBody D entityDto) {
-        return service.update(entityDto)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Void> update(@RequestBody D entityDto) {
+        service.update(entityDto);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @Override
