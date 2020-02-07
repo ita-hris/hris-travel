@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Getter @Setter
 @Builder
@@ -21,9 +21,9 @@ public class TravelDto extends AbstractDto {
 
     private String comment;
 
-    private Date dateFrom;
+    private OffsetDateTime dateFrom;
 
-    private Date dateTo;
+    private OffsetDateTime dateTo;
 
     private EmployeeDto employee;
 
