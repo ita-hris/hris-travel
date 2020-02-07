@@ -1,6 +1,6 @@
 package com.itechart.hris.hristravel.service.integration;
 
-import com.itechart.hris.hristravel.model.dto.currency.CurrencyRateDto;
+import com.itechart.hris.hristravel.model.dto.integration.CurrencyRateIntegrationDto;
 import com.itechart.hris.hristravel.model.entity.Currency;
 import com.itechart.hris.hristravel.service.CurrencyRateService;
 import com.itechart.hris.hristravel.service.CurrencyService;
@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -32,26 +30,18 @@ public class CurrencyIntegrationService {
     }
 
     public void updateCurrencyRate() {
-        CurrencyRateDto currencyRateDto = restTemplate.getForObject(urlForService, CurrencyRateDto.class);
+        CurrencyRateIntegrationDto currencyRateDto = restTemplate.getForObject(urlForService, CurrencyRateIntegrationDto.class);
 
         if (currencyRateDto == null || currencyRateDto.getBase().isEmpty() || currencyRateDto.getRates().isEmpty()) {
             LOGGER.error("Currencies could not refresh... Something wrong");
             return;
         }
-
-        Currency baseCurrency = currencyService.getByCode(currencyRateDto.getBase());
-        OffsetDateTime dateOfRate = currencyRateDto.getDate().toInstant().atOffset(ZoneOffset.UTC);
-        if (currencyRateService.isDateRateExists(dateOfRate)) {
-            return;
-        }
-        currencyRateDto.getRates().forEach((codeTo, rate) ->
-                currencyRateService.save(rate, baseCurrency, codeTo, dateOfRate));
-
+        currencyRateService.save(currencyRateDto);
     }
 
     public void saveCurrencyIfNotExist() {
         Set<String> currencies =
-                Objects.requireNonNull(restTemplate.getForObject(urlForService, CurrencyRateDto.class))
+                Objects.requireNonNull(restTemplate.getForObject(urlForService, CurrencyRateIntegrationDto.class))
                         .getRates()
                         .keySet();
 

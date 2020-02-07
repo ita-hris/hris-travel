@@ -1,4 +1,4 @@
-package com.itechart.hris.hristravel.model.dto.currency;
+package com.itechart.hris.hristravel.model.dto.integration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.util.Map;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyRateDto {
+public class CurrencyRateIntegrationDto {
     private Map<String, BigDecimal> rates;
     private String base;
     private Date date;
