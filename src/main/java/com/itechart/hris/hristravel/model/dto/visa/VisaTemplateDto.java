@@ -1,17 +1,20 @@
-package com.itechart.hris.hristravel.model.dto.travel;
+package com.itechart.hris.hristravel.model.dto.visa;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.NoArgsConstructor;
 
+/**
+ * DTO for VisaTemplate
+ */
 @Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpenseTypeDto extends AbstractDto {
+public class VisaTemplateDto extends AbstractDto {
 
     private Long id;
 

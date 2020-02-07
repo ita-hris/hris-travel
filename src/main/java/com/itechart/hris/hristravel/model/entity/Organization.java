@@ -1,8 +1,7 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,8 +16,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "organization")
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 public class Organization extends AbstractEntity {
 
     @Id
@@ -30,7 +28,6 @@ public class Organization extends AbstractEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "organization")
     private Set<Department> departments = new HashSet<>();
 }

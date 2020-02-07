@@ -1,6 +1,6 @@
 package com.itechart.hris.hristravel.web.controller.common;
 
-import com.itechart.hris.hristravel.model.entity.AbstractEntity;
+import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +13,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public interface CommonController<E extends AbstractEntity> {
+public interface CommonController<D extends AbstractDto> {
 
     @GetMapping("/{id}")
     @ApiOperation(value = "Get an entity by Id")
-    ResponseEntity<E> get(@ApiParam(value = "Entity id from which entity object will retrieve", required = true)
+    ResponseEntity<D> get(@ApiParam(value = "Entity id from which entity object will retrieve", required = true)
                           @PathVariable Long id);
 
     @PostMapping
     @ApiOperation(value = "Add an entity")
-    ResponseEntity<E> save(@ApiParam(value = "Entity object store in database table", required = true)
-                           @RequestBody E entity);
+    ResponseEntity<D> save(@ApiParam(value = "Entity object store in database table", required = true)
+                           @RequestBody D entityDto);
 
     @PutMapping
     @ApiOperation(value = "Update an entity")
-    ResponseEntity<E> update(@ApiParam(value = "Update entity object", required = true)
-                             @RequestBody E entity);
+    ResponseEntity<D> update(@ApiParam(value = "Update entity object", required = true)
+                             @RequestBody D entityDto);
 
     @DeleteMapping("/{id}")
     @ApiOperation(value = "Delete an entity")
@@ -37,5 +37,5 @@ public interface CommonController<E extends AbstractEntity> {
 
     @GetMapping
     @ApiOperation(value = "View a list of available entities", response = List.class)
-    ResponseEntity<List<E>> getAll();
+    ResponseEntity<List<D>> getAll();
 }

@@ -1,17 +1,17 @@
-package com.itechart.hris.hristravel.model.dto.travel;
+package com.itechart.hris.hristravel.model.dto.corporate;
 
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpenseTypeDto extends AbstractDto {
+public class EmployeeRoleDto extends AbstractDto {
 
     private Long id;
 

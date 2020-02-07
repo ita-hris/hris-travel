@@ -1,7 +1,8 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,13 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "department")
-@Data
-@EqualsAndHashCode(callSuper = true)
+@Getter @Setter
 public class Department extends AbstractEntity {
 
     @Id
@@ -31,4 +34,8 @@ public class Department extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "organization_id", referencedColumnName = "id", nullable = false)
     private Organization organization;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "department")
+    private Set<Employee> employees = new HashSet<>();
 }

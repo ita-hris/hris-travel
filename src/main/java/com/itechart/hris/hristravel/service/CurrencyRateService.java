@@ -1,5 +1,10 @@
 package com.itechart.hris.hristravel.service;
 
+import com.itechart.hris.hristravel.dao.repository.CurrencyRepository;
+import com.itechart.hris.hristravel.model.dto.corporate.CurrencyDto;
+import com.itechart.hris.hristravel.model.entity.Currency;
+import com.itechart.hris.hristravel.service.common.AbstractService;
+import com.itechart.hris.hristravel.util.BeanMapper;
 import com.itechart.hris.hristravel.dao.repository.CurrencyRateRepository;
 import com.itechart.hris.hristravel.dao.repository.CurrencyRepository;
 import com.itechart.hris.hristravel.model.entity.Currency;
@@ -11,6 +16,11 @@ import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 
 @Service
+public class CurrencyRateService extends AbstractService<Currency, CurrencyDto, CurrencyRepository> {
+
+    public CurrencyRateService(CurrencyRepository repository, BeanMapper mapper) {
+        super(repository, mapper, Currency.class, CurrencyDto.class);
+    }
 public class CurrencyRateService extends AbstractService<CurrencyRate, CurrencyRateRepository> {
 
     private CurrencyRateRepository currencyRateRepository;

@@ -1,6 +1,6 @@
 package com.itechart.hris.hristravel.web.controller.common;
 
-import com.itechart.hris.hristravel.model.entity.AbstractEntity;
+import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import com.itechart.hris.hristravel.service.common.CommonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-public abstract class AbstractController<E extends AbstractEntity, S extends CommonService<E>> implements CommonController<E> {
+public abstract class AbstractController<D extends AbstractDto, S extends CommonService<D>> implements CommonController<D> {
 
     private final S service;
 
@@ -18,22 +18,22 @@ public abstract class AbstractController<E extends AbstractEntity, S extends Com
     }
 
     @Override
-    public ResponseEntity<E> get(@PathVariable Long id) {
+    public ResponseEntity<D> get(@PathVariable Long id) {
         return service.get(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @Override
-    public ResponseEntity<E> save(@RequestBody E entity) {
-        return service.save(entity)
+    public ResponseEntity<D> save(@RequestBody D entityDto) {
+        return service.save(entityDto)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
     }
 
     @Override
-    public ResponseEntity<E> update(@RequestBody E entity) {
-        return service.update(entity)
+    public ResponseEntity<D> update(@RequestBody D entityDto) {
+        return service.update(entityDto)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -44,7 +44,7 @@ public abstract class AbstractController<E extends AbstractEntity, S extends Com
     }
 
     @Override
-    public ResponseEntity<List<E>> getAll() {
+    public ResponseEntity<List<D>> getAll() {
         return ResponseEntity.ok(service.getAll());
     }
 }
