@@ -1,6 +1,5 @@
 package com.itechart.hris.hristravel.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,7 +28,6 @@ public class Organization extends AbstractEntity {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "organization")
     private Set<Department> departments = new HashSet<>();
 }

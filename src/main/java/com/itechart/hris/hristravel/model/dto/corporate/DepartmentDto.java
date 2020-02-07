@@ -1,5 +1,7 @@
 package com.itechart.hris.hristravel.model.dto.corporate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.itechart.hris.hristravel.model.dto.AbstractDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +21,9 @@ public class DepartmentDto extends AbstractDto {
 
     private String name;
 
+    @JsonManagedReference
     private OrganizationDto organization;
 
+    @JsonIgnore
     private Set<EmployeeDto> employees;
 }
