@@ -11,7 +11,7 @@ public interface CommonService<D extends AbstractDto> {
 
     Optional<D> save(D entity);
 
-    Optional<D> update(D entity);
+    void update(D entity);
 
     Boolean deleteById(Long id);
 

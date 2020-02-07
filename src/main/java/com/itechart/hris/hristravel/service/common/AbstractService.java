@@ -26,13 +26,12 @@ public abstract class AbstractService<E extends AbstractEntity, D extends Abstra
 
     @Override
     public Optional<D> save(D entityDto) {
-        //TODO тут можно подумать
         return Optional.of(mapper.map(repository.save(mapper.map(entityDto, entityClass)), dtoClass));
     }
 
     @Override
-    public Optional<D> update(D entityDto) {
-        return Optional.of(mapper.map(repository.save(mapper.map(entityDto, entityClass)), dtoClass));
+    public void update(D entityDto) {
+        repository.save(mapper.map(entityDto, entityClass));
     }
 
     @Override

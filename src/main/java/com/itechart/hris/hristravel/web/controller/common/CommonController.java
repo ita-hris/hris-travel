@@ -27,7 +27,7 @@ public interface CommonController<D extends AbstractDto> {
 
     @PutMapping
     @ApiOperation(value = "Update an entity")
-    ResponseEntity<D> update(@ApiParam(value = "Update entity object", required = true)
+    ResponseEntity<Void> update(@ApiParam(value = "Update entity object", required = true)
                              @RequestBody D entityDto);
 
     @DeleteMapping("/{id}")
