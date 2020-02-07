@@ -8,7 +8,7 @@ import lombok.Setter;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Getter @Setter
 @Builder
@@ -24,5 +24,5 @@ public class CurrencyRateDto extends AbstractDto {
 
     private CurrencyDto currencyTo;
 
-    private Date date;
+    private OffsetDateTime date;
 }
