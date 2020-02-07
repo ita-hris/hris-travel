@@ -4,4 +4,12 @@
     xsi:schemaLocation="http://dozer.sourceforge.net
       http://dozer.sourceforge.net/schema/beanmapping.xsd">
     <!-- add mappings here -->
+    <configuration>
+        <custom-converters>
+            <converter type="com.itechart.hris.hristravel.converter.OffsetDateTimeConverter">
+                <class-a>java.time.OffsetDateTime</class-a>
+                <class-b>java.time.OffsetDateTime</class-b>
+            </converter>
+        </custom-converters>
+    </configuration>
 </mappings>
