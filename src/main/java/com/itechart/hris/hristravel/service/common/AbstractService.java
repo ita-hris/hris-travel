@@ -32,7 +32,6 @@ public abstract class AbstractService<E extends AbstractEntity, D extends Abstra
     @Override
     public void update(D entityDto) {
         repository.save(mapper.map(entityDto, entityClass));
-        return;
     }
 
     @Override
