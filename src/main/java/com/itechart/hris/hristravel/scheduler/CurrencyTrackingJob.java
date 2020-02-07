@@ -1,14 +1,20 @@
-package com.itechart.hris.hristravel.service.scheduler;
+package com.itechart.hris.hristravel.scheduler;
 
 import com.itechart.hris.hristravel.service.integration.CurrencyIntegrationService;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * This methods starts by schedule.
+ * updateCurrencyRate() - update rate of currencies every workday on 12 am
+ * updateCurrency() - update list of currencies every workday on 11 am
+ */
 @Component
-public class ScheduledTasks {
+public class CurrencyTrackingJob {
+
     private final CurrencyIntegrationService currencyIntegrationService;
 
-    public ScheduledTasks(CurrencyIntegrationService currencyIntegrationService) {
+    public CurrencyTrackingJob(CurrencyIntegrationService currencyIntegrationService) {
         this.currencyIntegrationService = currencyIntegrationService;
     }
 

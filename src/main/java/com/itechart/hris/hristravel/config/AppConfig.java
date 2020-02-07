@@ -1,8 +1,5 @@
 package com.itechart.hris.hristravel.config;
 
-import java.util.Collections;
-import java.util.List;
-
 import com.google.common.base.Predicates;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
@@ -10,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -17,6 +15,9 @@ import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableSwagger2
@@ -54,5 +55,10 @@ public class AppConfig {
                 "",
                 Collections.emptyList()
         );
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 }

@@ -24,4 +24,8 @@ public class CurrencyDto extends AbstractDto {
     private Set<CurrencyRateDto> currencyFrom;
 
     private Set<CurrencyRateDto> currencyTo;
+
+    public CurrencyDto(String code) {
+        this.code = code;
+    }
 }
