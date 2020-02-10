@@ -28,7 +28,9 @@ public class CurrencyService extends AbstractService<Currency, CurrencyDto, Curr
         Set<String> currencyCodes = currencyRateIntegrationDto
                 .getRates()
                 .keySet();
+        currencyCodes.add(currencyRateIntegrationDto.getBase());
         List<Currency> existingCurrencies = currencyRepository.findAll();
+
         for (Currency existingCurrency : existingCurrencies) {
             currencyCodes.remove(existingCurrency.getCode());
         }

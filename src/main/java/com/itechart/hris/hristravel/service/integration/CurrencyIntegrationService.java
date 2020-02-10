@@ -9,10 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Objects;
-
 @Service
 public class CurrencyIntegrationService {
+
     private static final Logger LOGGER = LogManager.getLogger(CurrencyIntegrationService.class);
     private final CurrencyRateService currencyRateService;
     private final CurrencyService currencyService;
@@ -28,16 +27,28 @@ public class CurrencyIntegrationService {
     }
 
     public void updateCurrencyRate() {
+        CurrencyRateIntegrationDto currencyRateDto = getCurrencyRateIntegrationDto();
+
+        if (currencyRateDto != null) {
+            currencyRateService.save(currencyRateDto);
+        }
+    }
+
+    public void saveCurrencyIfNotExist() {
+        CurrencyRateIntegrationDto currencyRateDto = getCurrencyRateIntegrationDto();
+
+        if (currencyRateDto != null) {
+            currencyService.save(currencyRateDto);
+        }
+    }
+
+    private CurrencyRateIntegrationDto getCurrencyRateIntegrationDto() {
         CurrencyRateIntegrationDto currencyRateDto = restTemplate.getForObject(urlForService, CurrencyRateIntegrationDto.class);
 
         if (currencyRateDto == null || currencyRateDto.getBase().isEmpty() || currencyRateDto.getRates().isEmpty()) {
             LOGGER.error("Currencies could not refresh... Something wrong");
-            return;
+            currencyRateDto = null;
         }
-        currencyRateService.save(currencyRateDto);
-    }
-
-    public void saveCurrencyIfNotExist() {
-        currencyService.save(Objects.requireNonNull(restTemplate.getForObject(urlForService, CurrencyRateIntegrationDto.class)));
+        return currencyRateDto;
     }
 }

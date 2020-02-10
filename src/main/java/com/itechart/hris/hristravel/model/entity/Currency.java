@@ -13,7 +13,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "currency")
-@Getter @Setter
+@Getter
+@Setter
 public class Currency extends AbstractEntity {
 
     @Id
@@ -22,7 +23,7 @@ public class Currency extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "currency_id")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = true)
     private String name;
 
     @Column(name = "code", nullable = false)
