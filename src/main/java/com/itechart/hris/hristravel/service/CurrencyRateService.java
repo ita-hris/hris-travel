@@ -2,9 +2,9 @@ package com.itechart.hris.hristravel.service;
 
 import com.itechart.hris.hristravel.dao.repository.CurrencyRateRepository;
 import com.itechart.hris.hristravel.dao.repository.CurrencyRepository;
-import com.itechart.hris.hristravel.model.dto.corporate.CurrencyDto;
 import com.itechart.hris.hristravel.model.dto.corporate.CurrencyRateDto;
 import com.itechart.hris.hristravel.model.dto.integration.CurrencyRateIntegrationDto;
+import com.itechart.hris.hristravel.model.entity.Currency;
 import com.itechart.hris.hristravel.model.entity.CurrencyRate;
 import com.itechart.hris.hristravel.service.common.AbstractService;
 import com.itechart.hris.hristravel.util.BeanMapper;
@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CurrencyRateService extends AbstractService<CurrencyRate, CurrencyRateDto, CurrencyRateRepository> {
@@ -28,16 +30,28 @@ public class CurrencyRateService extends AbstractService<CurrencyRate, CurrencyR
     }
 
     public void save(CurrencyRateIntegrationDto currencyRateIntegrationDto) {
-        CurrencyDto baseCurrency = mapper.map(currencyRepository.getByCode(currencyRateIntegrationDto.getBase()), CurrencyDto.class);
+        List<Currency> allCurrencies = currencyRepository.findAll();
+
+        Currency baseCurrency = allCurrencies.stream()
+                .filter(x -> x.getCode().equals(currencyRateIntegrationDto.getBase()))
+                .findFirst()
+                .get();
+
         OffsetDateTime dateOfRate = currencyRateIntegrationDto.getDate().toInstant().atOffset(ZoneOffset.UTC);
 
-        currencyRateIntegrationDto.getRates().forEach((codeTo, rate) ->
-                currencyRateRepository.save(
-                        mapper.map(new CurrencyRateDto(
-                                rate,
-                                baseCurrency,
-                                mapper.map(currencyRepository.getByCode(codeTo), CurrencyDto.class),
-                                dateOfRate), CurrencyRate.class)));
+        List<CurrencyRate> currencyRateDtoList = new ArrayList<>();
 
+        currencyRateIntegrationDto.getRates()
+                .forEach((codeTo, rate) -> currencyRateDtoList.add(CurrencyRate.CurrencyRateBuilder.aCurrencyRate()
+                        .rate(rate)
+                        .currencyFrom(baseCurrency)
+                        .currencyTo(allCurrencies.stream()
+                                .filter(x -> x.getCode().equals(codeTo))
+                                .findFirst()
+                                .get())
+                        .date(dateOfRate).build()));
+
+
+        currencyRateRepository.saveAll(currencyRateDtoList);
     }
 }
