@@ -19,14 +19,13 @@ import java.util.List;
 public class CurrencyRateService extends AbstractService<CurrencyRate, CurrencyRateDto, CurrencyRateRepository> {
 
     private CurrencyRateRepository currencyRateRepository;
+
     private CurrencyRepository currencyRepository;
-    private BeanMapper mapper;
 
     public CurrencyRateService(CurrencyRateRepository currencyRateRepository, BeanMapper mapper, CurrencyRepository currencyRepository) {
         super(currencyRateRepository, mapper, CurrencyRate.class, CurrencyRateDto.class);
         this.currencyRateRepository = currencyRateRepository;
         this.currencyRepository = currencyRepository;
-        this.mapper = mapper;
     }
 
     public void save(CurrencyRateIntegrationDto currencyRateIntegrationDto) {
@@ -50,7 +49,6 @@ public class CurrencyRateService extends AbstractService<CurrencyRate, CurrencyR
                                 .findFirst()
                                 .get())
                         .date(dateOfRate).build()));
-
 
         currencyRateRepository.saveAll(currencyRateDtoList);
     }

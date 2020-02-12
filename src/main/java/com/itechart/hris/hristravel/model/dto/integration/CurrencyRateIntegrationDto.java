@@ -14,7 +14,10 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CurrencyRateIntegrationDto {
+
     private Map<String, BigDecimal> rates;
+
     private String base;
+
     private Date date;
 }

@@ -13,8 +13,11 @@ import org.springframework.web.client.RestTemplate;
 public class CurrencyIntegrationService {
 
     private static final Logger LOGGER = LogManager.getLogger(CurrencyIntegrationService.class);
+
     private final CurrencyRateService currencyRateService;
+
     private final CurrencyService currencyService;
+
     private final RestTemplate restTemplate;
 
     @Value("${currency.service.url}")
