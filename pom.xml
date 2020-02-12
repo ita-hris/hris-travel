@@ -148,8 +148,8 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <configLocation>etc\checkstyle.xml</configLocation>
-                    <suppressionsLocation>etc\checkstyle-suppression.xml</suppressionsLocation>
+                    <configLocation>etc/checkstyle.xml</configLocation>
+                    <suppressionsLocation>etc/checkstyle-suppression.xml</suppressionsLocation>
                     <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>

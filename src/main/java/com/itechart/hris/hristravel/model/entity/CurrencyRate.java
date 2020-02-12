@@ -39,4 +39,47 @@ public class CurrencyRate extends AbstractEntity {
 
     @Column(name = "date")
     private OffsetDateTime date;
+
+    public static final class CurrencyRateBuilder {
+        private BigDecimal rate;
+        private Currency currencyFrom;
+        private Currency currencyTo;
+        private OffsetDateTime date;
+
+        private CurrencyRateBuilder() {
+        }
+
+        public static CurrencyRateBuilder aCurrencyRate() {
+            return new CurrencyRateBuilder();
+        }
+
+        public CurrencyRateBuilder rate(BigDecimal rate) {
+            this.rate = rate;
+            return this;
+        }
+
+        public CurrencyRateBuilder currencyFrom(Currency currencyFrom) {
+            this.currencyFrom = currencyFrom;
+            return this;
+        }
+
+        public CurrencyRateBuilder currencyTo(Currency currencyTo) {
+            this.currencyTo = currencyTo;
+            return this;
+        }
+
+        public CurrencyRateBuilder date(OffsetDateTime date) {
+            this.date = date;
+            return this;
+        }
+
+        public CurrencyRate build() {
+            CurrencyRate currencyRate = new CurrencyRate();
+            currencyRate.setRate(rate);
+            currencyRate.setCurrencyFrom(currencyFrom);
+            currencyRate.setCurrencyTo(currencyTo);
+            currencyRate.setDate(date);
+            return currencyRate;
+        }
+    }
 }

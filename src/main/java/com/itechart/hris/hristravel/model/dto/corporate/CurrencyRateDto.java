@@ -25,4 +25,11 @@ public class CurrencyRateDto extends AbstractDto {
     private CurrencyDto currencyTo;
 
     private OffsetDateTime date;
+
+    public CurrencyRateDto(BigDecimal rate, CurrencyDto currencyFrom, CurrencyDto currencyTo, OffsetDateTime date) {
+        this.rate = rate;
+        this.currencyFrom = currencyFrom;
+        this.currencyTo = currencyTo;
+        this.date = date;
+    }
 }

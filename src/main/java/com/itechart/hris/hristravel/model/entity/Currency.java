@@ -8,14 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Set;
 
 @Entity
 @Table(name = "currency")
-@Getter @Setter
+@Getter
+@Setter
 public class Currency extends AbstractEntity {
 
     @Id
@@ -24,15 +23,9 @@ public class Currency extends AbstractEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "currency_id")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = true)
     private String name;
 
     @Column(name = "code", nullable = false)
     private String code;
-
-    @OneToMany(mappedBy = "currencyFrom")
-    private Set<CurrencyRate> currencyFrom;
-
-    @OneToMany(mappedBy = "currencyTo")
-    private Set<CurrencyRate> currencyTo;
 }
